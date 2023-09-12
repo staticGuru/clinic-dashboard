@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,6 +12,9 @@ import { GithubIcon, TwitterIcon } from "icons";
 
 function LoginPage() {
   const { mode } = useContext(WindmillContext);
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("");
+
   const imgSource =
     mode === "dark"
       ? "/assets/img/login-office-dark.jpeg"
@@ -41,6 +44,8 @@ function LoginPage() {
                   className="mt-1"
                   type="email"
                   placeholder="john@doe.com"
+                  value={email}
+                  onChange={(e)=>setEmail(e.target.value)}
                 />
               </Label>
 
@@ -50,14 +55,8 @@ function LoginPage() {
                   className="mt-1"
                   type="password"
                   placeholder="***************"
-                />
-              </Label>
-              <Label className="mt-4">
-                <span>Confirm Password</span> {/**summa*/}
-                <Input
-                  className="mt-1"
-                  type="password"
-                  placeholder="***************"
+                  value={password}
+                  onChange={(e)=>setPassword(e.target.value)}
                 />
               </Label>
 
